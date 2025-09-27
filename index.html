@@ -1,9 +1,223 @@
 <!DOCTYPE html>
-<html>
-  <head><title>My DevOps Project</title></head>
-  <body>
-    <h1>Hello from my CI/CD pipeline!
-        Completed!
-    </h1>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elegance Salon</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffe6f0;
+      color: #4d2c3d;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #ffc1d3;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-family: 'Georgia', serif;
+      font-size: 36px;
+      color: #842c4b;
+      margin-bottom: 10px;
+    }
+
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #842c4b;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #fff;
+      background-color: #842c4b;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1598367743817-bf0f4d0b28a2?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      position: relative;
+      z-index: 1;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 50px 20px;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .service {
+      background-color: #ffeef5;
+      flex: 1 1 250px;
+      max-width: 300px;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+    }
+
+    .service h2 {
+      color: #e75480;
+      margin-bottom: 15px;
+    }
+
+    .service p {
+      font-size: 16px;
+      color: #4d2c3d;
+    }
+
+    footer {
+      background-color: #ffc1d3;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      color: #842c4b;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Falling Emoji Petals */
+    .petal-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      font-size: 20px;
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .services {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Elegance Salon</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    Beauty & Care, Redefined
+  </div>
+
+  <!-- Falling Petal Emojis -->
+  <div class="petal-container" id="petal-container"></div>
+
+  <section class="services">
+    <div class="service">
+      <h2>Hair Styling</h2>
+      <p>Get trendy haircuts, coloring, and styling for any occasion.</p>
+    </div>
+    <div class="service">
+      <h2>Manicure & Pedicure</h2>
+      <p>Pamper your hands and feet with our professional treatments.</p>
+    </div>
+    <div class="service">
+      <h2>Facial & Skin Care</h2>
+      <p>Glow with our luxurious facials and skin rejuvenation treatments.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Elegance Salon | All Rights Reserved
+  </footer>
+
+  <script>
+    const container = document.getElementById('petal-container');
+
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.innerText = '🌸'; // Lotus flower emoji
+
+      // Random horizontal position
+      petal.style.left = Math.random() * window.innerWidth + 'px';
+
+      // Random animation duration
+      const duration = 5 + Math.random() * 5;
+      petal.style.animationDuration = duration + 's';
+
+      // Random font size (for visual variation)
+      const size = 16 + Math.random() * 10;
+      petal.style.fontSize = size + 'px';
+
+      container.appendChild(petal);
+
+      // Remove after animation
+      setTimeout(() => {
+        petal.remove();
+      }, duration * 1000);
+    }
+
+    // Create petals every 200ms
+    setInterval(createPetal, 200);
+  </script>
+
+</body>
 </html>
