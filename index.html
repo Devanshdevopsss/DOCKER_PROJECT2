@@ -112,6 +112,28 @@
       z-index: 2;
     }
 
+    /* Floating Button */
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ffb6c1;
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .floating-btn:hover {
+      background-color: #ff8fab;
+      box-shadow: 0 8px 20px rgba(255, 105, 135, 0.5);
+    }
+
     /* Falling Emoji Petals */
     .petal-container {
       position: fixed;
@@ -187,6 +209,9 @@
   <footer>
     &copy; 2025 Elegance Salon | All Rights Reserved
   </footer>
+
+  <!-- Floating Appointment Button -->
+  <a href="#appointment" class="floating-btn">Book Appointment</a>
 
   <script>
     const container = document.getElementById('petal-container');
